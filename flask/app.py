@@ -5,6 +5,21 @@ app = Flask(__name__)
 # In-memory storage for demonstration
 items = {}
 
+@app.route('/')
+def index():
+    return (
+        "<h1>Welcome to the Item Management API!</h1>"
+        "<h2>Available endpoints:</h2>"
+        "<ul>"
+        "<li><b>GET</b> /items - List all items</li>"
+        "<li><b>POST</b> /items - Create a new item<br>"
+        "&nbsp;&nbsp;Body: <code>{\"id\": str, \"name\": str}</code></li>"
+        "<li><b>PUT</b> /items/&lt;item_id&gt; - Update an item name<br>"
+        "&nbsp;&nbsp;Body: <code>{\"name\": str}</code></li>"
+        "<li><b>DELETE</b> /items/&lt;item_id&gt; - Delete an item</li>"
+        "</ul>"
+    )
+
 @app.route('/items', methods=['GET'])
 def get_items():
     return jsonify(list(items.values())), 200
