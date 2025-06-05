@@ -46,3 +46,26 @@ curl -X PUT http://localhost:5000/items/1 \
 ```bash
 curl -X DELETE http://localhost:5000/items/1
 ```
+
+## Test
+
+### 1. Run all tests
+```bash
+pytest
+```
+Ensure the tests are named test_*.py or *_test.py.
+
+### 2. Run test in folder
+```bash
+PYTHONPATH=/home/carlos/Documents/rest_api/flask pytest tests/
+```
+
+### 3. Run specific file
+```bash
+PYTHONPATH=/home/carlos/Documents/rest_api/flask pytest
+```
+
+### 4. Run specific test
+```bash
+PYTHONPATH=/home/carlos/Documents/rest_api/flask pytest test_app.py -k test_create_item_success
+```
