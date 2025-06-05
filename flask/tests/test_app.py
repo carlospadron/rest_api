@@ -1,15 +1,22 @@
 import pytest
-from app import app, items
+from app import create_app
+
+@pytest.fixture()
+def app():
+    app = create_app()
+    app.config.update({
+        "TESTING": True,
+    })
+
+    yield app
 
 @pytest.fixture(autouse=True)
-def clear_items():
-    items.clear()
+def clear_items(app):
+    app.items.clear()
 
 @pytest.fixture
-def client():
-    app.config['TESTING'] = True
-    with app.test_client() as client:
-        yield client
+def client(app):
+    return app.test_client()
 
 def test_get_items_empty(client):
     resp = client.get('/items')
