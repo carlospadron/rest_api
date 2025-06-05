@@ -20,3 +20,29 @@ This is a basic Flask project demonstrating REST API endpoints for GET, POST, PU
 
 ## Notes
 - Data is stored in memory and will be lost when the server restarts.
+
+## Example curl Commands for Testing Endpoints
+
+### 1. List all items (GET)
+```bash
+curl http://localhost:5000/items
+```
+
+### 2. Create a new item (POST)
+```bash
+curl -X POST http://localhost:5000/items \
+  -H "Content-Type: application/json" \
+  -d '{"id": "1", "name": "Item 1"}'
+```
+
+### 3. Update an existing item's name (PUT)
+```bash
+curl -X PUT http://localhost:5000/items/1 \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Updated Item 1"}'
+```
+
+### 4. Delete an item (DELETE)
+```bash
+curl -X DELETE http://localhost:5000/items/1
+```
