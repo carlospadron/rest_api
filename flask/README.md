@@ -51,21 +51,21 @@ curl -X DELETE http://localhost:5000/items/1
 
 ### 1. Run all tests
 ```bash
-pytest
+PYTHONPATH=. pytest
 ```
 Ensure the tests are named test_*.py or *_test.py.
 
 ### 2. Run test in folder
 ```bash
-PYTHONPATH=/home/carlos/Documents/rest_api/flask pytest tests/
+PYTHONPATH=. pytest tests/
 ```
 
 ### 3. Run specific file
 ```bash
-PYTHONPATH=/home/carlos/Documents/rest_api/flask pytest
+PYTHONPATH=. pytest tests/test_app.py
 ```
 
 ### 4. Run specific test
 ```bash
-PYTHONPATH=/home/carlos/Documents/rest_api/flask pytest test_app.py -k test_create_item_success
+PYTHONPATH=. pytest tests/test_app.py -k test_create_item_success
 ```
