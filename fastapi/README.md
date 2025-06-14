@@ -65,6 +65,35 @@ Once the server is running, you can access the interactive documentation at:
 - Swagger UI: [http://localhost:8000/docs](http://localhost:8000/docs)
 - ReDoc: [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
+## Running Tests
+
+To run all tests for this FastAPI project, use:
+```bash
+PYTHONPATH=. pytest test/
+```
+
+This will automatically discover and run all test files in the `test/` folder (such as `test_main.py`).
+
+- Ensure you have `pytest` installed. If not, install it with:
+  ```bash
+  pipenv install pytest
+  # or
+  pip install pytest
+  ```
+- Tests will clear the in-memory store before each test, so each test runs in isolation.
+
+You can also run a specific test file or test function:
+```bash
+PYTHONPATH=. pytest test/test_main.py
+PYTHONPATH=. pytest test/test_main.py -k test_create_item_success
+```
+
+Alternatively, if using pipenv:
+```bash
+pipenv run pytest test/
+pipenv run pytest test/test_main.py -k test_create_item_success
+```
+
 ## Notes
 - Data is stored in memory and will be lost when the server restarts.
 - For production, use a WSGI server like Uvicorn or Gunicorn.
